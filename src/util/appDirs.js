@@ -1,5 +1,6 @@
 module.exports = [
   'components',
+  'initializers',
   'config',
   'controllers',
   'helpers',

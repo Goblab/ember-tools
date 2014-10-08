@@ -7,4 +7,5 @@ exports.route = require('./route');
 exports.scaffold = require('./scaffold');
 exports.mixin = require('./mixin');
 exports.helper = require('./helper');
+exports.initializer = require('./initializer');
 
