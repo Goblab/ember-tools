@@ -1,16 +1,16 @@
 var {{objectName}} = Ember.ObjectController.extend({
+	actions : {
+		  save: function() {
+		    this.get('store').commit();
+		    this.redirectToModel();
+		  },
 
-  save: function() {
-    this.get('store').commit();
-    this.redirectToModel();
-  },
-
-  redirectToModel: function() {
-    var router = this.get('target');
-    var model = this.get('model');
-    router.transitionTo('{{modelRoute}}', model);
-  }
-
+		  redirectToModel: function() {
+		    var router = this.get('target');
+		    var model = this.get('model');
+		    router.transitionTo('{{modelRoute}}', model);
+		  }
+	}
 });
 
 module.exports = {{objectName}};
