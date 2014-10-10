@@ -86,7 +86,7 @@ function createRoutes(resource) {
       modelName: inflector.objectify(modelName),
       modelPath: '../models/' + inflector.underscore(modelName),
       objectName: objectName,
-      resourcesRoute: inflector.pluralize(modelRoute)
+      resourcesRoute: inflector.pluralize(modelName)
     },
     saveDir+inflector.pluralize(underscored)+'_route.js'
   );
