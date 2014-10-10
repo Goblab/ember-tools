@@ -1,11 +1,14 @@
 var {{modelName}} = require('{{modelPath}}');
 
 var {{objectName}} = Ember.Route.extend({
-
   model: function() {
-    return {{modelName}}.find();
+    var store = this.get('store');
+	return new Ember.RSVP.Promise(function(resolve) {
+		store.find('{{modelName}}').then(function ({{resourcesRoute}}) {
+	 		resolve({{resourcesRoute}});
+		})
+    });  
   }
-
 });
 
 module.exports = {{objectName}};

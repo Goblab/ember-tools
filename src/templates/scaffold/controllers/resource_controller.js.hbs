@@ -1,12 +1,12 @@
 var {{objectName}} = Ember.ObjectController.extend({
-
-  destroy: function() {
-    if (!confirm('Are you sure?')) return;
-    this.get('model').deleteRecord();
-    this.get('store').commit();
-    this.get('target.router').transitionTo('{{resourcesRoute}}');
-  }
-
+	actions: {
+		destroy: function() {
+			if (!confirm('Are you sure?')) return;
+		    this.get('model').deleteRecord();
+		    this.get('model').save();
+			this.get('target.router').transitionTo('{{resourcesRoute}}');
+		}
+	}
 });
 
 module.exports = {{objectName}};

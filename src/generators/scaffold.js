@@ -35,7 +35,8 @@ function createControllers(resource) {
     'controllers/edit_resource_controller.js', 
     {
       objectName: 'Edit' + objectName,
-      modelRoute: modelRoute
+      modelRoute: modelRoute,
+      resourcesRoute: inflector.pluralize(modelRoute)
     },
     saveDir+'edit_'+underscored+'_controller.js'
   );
@@ -45,7 +46,8 @@ function createControllers(resource) {
     {
       editObjectName: 'Edit' + objectName,
       editObjectPath: './edit_' + underscored + '_controller',
-      objectName: 'New' + objectName
+      objectName: 'New' + objectName,
+      resourcesRoute: inflector.pluralize(modelRoute)
     },
     saveDir+'new_'+underscored+'_controller.js'
   );
@@ -83,7 +85,8 @@ function createRoutes(resource) {
     {
       modelName: inflector.objectify(modelName),
       modelPath: '../models/' + inflector.underscore(modelName),
-      objectName: objectName
+      objectName: objectName,
+      resourcesRoute: inflector.pluralize(modelRoute)
     },
     saveDir+inflector.pluralize(underscored)+'_route.js'
   );
@@ -119,6 +122,14 @@ function createTemplates(resource, fields) {
     },
     saveDir+resource+'.hbs'
   );
+  fs.writeTemplate(
+    'scaffold',
+    'templates/brief.hbs',
+    {
+      fields: fields,
+    },
+    saveDir+resource-brief+'.hbs'
+  );  
   fs.writeTemplate(
     'scaffold',
     'templates/resources.hbs',

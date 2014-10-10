@@ -2,18 +2,12 @@
 
 \{{#linkTo "{{newPath}}"}}New {{modelTitle}}\{{/linkTo}}
 
-<table>
-  <thead>{{#each fields}}
-    <th>{{name}}</th>{{/each}}
-  </thead>
-  <tbody>
-    \{{#each {{resource}} in controller}}
-    <tr>{{#each fields}}
-      <td>\{{ {{../resource}}.{{name}} }}</td>{{/each}}
-      <td>\{{#linkTo "{{resource}}" {{resource}} }}view\{{/linkTo}}</td>
-    </tr>
-    \{{/each}}
-  </tbody>
-</table>
-
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 view-entries">
+      \{{#collection contentBinding="controller"\}}
+        \{{{{modelName}}-brief modelBinding=this\}}
+      \{{/collection\}}
+    </div>
+  </div>
+</div>
