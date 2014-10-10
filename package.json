@@ -1,9 +1,11 @@
 {
-  "name": "ember-tools",
-  "version": "0.2.7",
+  "name": "ember-tools-ext",
+  "version": "0.0.1",
+
   "bin": {
-    "ember": "./bin/ember"
+    "ember-ext": "./bin/ember"
   },
+
   "dependencies": {
     "sync-prompt": "*",
     "commander": "1.1.1",
@@ -31,5 +33,9 @@
   },
   "engines": {
     "node": ">=0.8.16"
-  }
+  },
+  "repository" : { 
+    "type" : "git", 
+    "url" : "https://github.com/Goblab/ember-tools.git"
+  }  
 }
