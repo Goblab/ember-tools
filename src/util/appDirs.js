@@ -4,6 +4,7 @@ module.exports = [
   'config',
   'controllers',
   'helpers',
+  'form_wrappers',
   'models',
   'routes',
   'templates',

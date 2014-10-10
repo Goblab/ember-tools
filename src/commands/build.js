@@ -60,7 +60,7 @@ function createIndex(cb) {
     walker.on('file', function(dir, stats, next) {
       if (stats.name.charAt(0) !== '.') {
         var path = unroot(dir+'/'+stats.name).replace(/\.js$/, '');
-        if (dirName == 'helpers') {
+        if (dirName == 'helpers' || dirName == 'wrappers') {
           helpers.push({path: path});
         } else {
           var name = inflector.objectify(path.replace(dirName, ''));

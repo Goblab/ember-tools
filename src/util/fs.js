@@ -56,3 +56,10 @@ fs.renderTemplate = function(templatePath, locals) {
   return compiled(locals);
 };
 
+fs.writeFormWrapperTemplate = function(resourceName, locals) {
+  templateName = resourceName+'.hbs';
+  var savePath = config().jsPath+'/templates/'+templateName+'-input';
+  var templatePath = __dirname+'/../templates/generate/form_wrapper_template.hbs.hbs';
+  var src = fs.renderTemplate(templatePath, locals);
+  fs.writeFileSync(savePath, src);
+};

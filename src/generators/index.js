@@ -8,4 +8,5 @@ exports.scaffold = require('./scaffold');
 exports.mixin = require('./mixin');
 exports.helper = require('./helper');
 exports.initializer = require('./initializer');
+exports.formWrapper = require('./form_wrapper');
 

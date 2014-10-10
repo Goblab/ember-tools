@@ -1,0 +1,17 @@
+Ember.EasyForm.Config.registerWrapper('{{objectName}}FormWrapper', {
+  // Define the custom template
+  inputTemplate: 'wrappers/{{objectName}}-input',
+
+  // Define a custom config used by the template
+  controlsWrapperClass: '{{objectName}}-controls',
+
+  // Define the classes for the form, label, error...
+  formClass: '{{objectName}}-form',
+  fieldErrorClass: '{{objectName}}-error',
+  errorClass: '{{objectName}}-help-inline',
+  hintClass: '{{objectName}}-help-block',
+  labelClass: '{{objectName}}-control-label',
+  inputClass: '{{objectName}}-control-group'  
+});
+
+
