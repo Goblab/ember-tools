@@ -128,7 +128,7 @@ function createTemplates(resource, fields) {
     {
       fields: fields,
     },
-    saveDir+resource-brief+'.hbs'
+    saveDir+resource+'-brief.hbs'
   );  
   fs.writeTemplate(
     'scaffold',
@@ -138,7 +138,8 @@ function createTemplates(resource, fields) {
       modelTitle: inflector.humanize(modelName),
       newPath: 'new_' + inflector.underscore(resource),
       resource: modelName,
-      fields: fields
+      fields: fields,
+      modelName: resource
     },
     saveDir+inflector.pluralize(resource)+'.hbs'
   );

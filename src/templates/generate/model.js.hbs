@@ -2,6 +2,7 @@ var {{objectName}} = DS.Model.extend(Ember.Validations.Mixin,{
 {{#each fields}}
   {{name}}: DS.attr('{{type}}'){{comma}}
 {{/each}}
+  ,
   validations: {
     /*
     message: {

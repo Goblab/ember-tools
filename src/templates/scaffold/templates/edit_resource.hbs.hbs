@@ -1,15 +1,11 @@
-<h2>{{title}}</h2>
-
-<form \{{action save on="submit"}}>
-  {{#each fields}}
-  <p>
-    <label for="{{id}}">{{title}}</label><br>
-    \{{view Ember.TextField valueBinding="{{name}}" id="{{id}}"}}
-  </p>
-  {{/each}}
-  <p>
-    <button type="submit">Save</button>
-  </p>
-
-</form>
-
+<section class="container">
+	<div class="page-header">
+    <h3>{{title}}</h3>
+	</div>
+	<div class="">
+	\{{#form-for controller}}		
+			\{{input {{name}} }}
+		\{{submit}}
+	\{{/form-for}}
+	</div>
+</section>

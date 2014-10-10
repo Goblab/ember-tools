@@ -1,9 +1,12 @@
-<h2>{{title}}</h2>
-{{#each fields}}
-<p>
-  <b>{{title}}:</b> \{{ {{name}} }}
-</p>
-{{/each}}
-\{{#linkTo "{{resourcesRoute}}"}}←All {{resources}}\{{/linkTo}}
-\{{#linkTo "{{editRoute}}" model}}Edit\{{/linkTo}}
-<a href="#" \{{action "destroy"}}>Destroy</a>
+<div class="container">
+    <div class="row">
+		{{#each fields}}
+		<p>
+		  <b>{{title}}:</b> \{{ {{name}} }}
+		</p>
+		{{/each}}
+		\{{#linkTo "{{resourcesRoute}}"}}←All {{resources}}\{{/linkTo}}
+		\{{#linkTo "{{editRoute}}" model}}Edit\{{/linkTo}}
+		<a href="#" \{{action "destroy"}}>Destroy</a>
+    </div>
+</div>
