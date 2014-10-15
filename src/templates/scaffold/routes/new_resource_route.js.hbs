@@ -2,12 +2,12 @@ var {{modelName}} = require('{{modelPath}}');
 
 var {{objectName}} = Ember.Route.extend({
 
-  renderTemplate: function() {
-    this.render('{{editRoute}}', {controller: '{{controller}}'});
+  renderTemplate: function(controller, model) {
+    this.render('{{editRoute}}', {controller: controller, model: model});
   },
 
   model: function() {
-    return {{modelName}}.createRecord();
+    return this.store.createRecord('{{modelName}}');
   },
 
   deactivate: function() {

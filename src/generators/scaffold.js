@@ -14,8 +14,36 @@ module.exports = function(resource, env) {
   createControllers(resource);
   createRoutes(resource);
   createTemplates(resource, env.fields);
+  createComponents(resource, env.fields);
+  createViews(resource);
   addRoutes(resource);
 };
+
+function createComponents(resource, fields) {
+  if (fields) fields.forEach(function(field) {
+    field.title = inflector.humanize(field.name);
+    field.id = inflector.underscore(field.name);
+  });
+
+  var resourceName = inflector.dasherize(resource) + '-brief';
+  var modelName = inflector.underscore(inflector.singularize(resource));
+  var saveDir = root + '/templates/components/';
+
+  resourceName = inflector.underscore(resource) + '_component';
+  var templateName = 'components/' + inflector.dasherize(resource);
+  fs.writeGenerator('component', resourceName, {
+    objectName: inflector.objectify(resourceName),
+  });
+
+  fs.writeTemplate(
+    'scaffold',
+    'templates/brief.hbs',
+    {
+      fields: fields,
+    },
+    saveDir + resource+'-brief.hbs'
+  ); 
+}
 
 function createModel(resource, fields) {
   var modelName = inflector.underscore(inflector.singularize(resource));
@@ -121,15 +149,7 @@ function createTemplates(resource, fields) {
       resources: inflector.pluralize(title)
     },
     saveDir+resource+'.hbs'
-  );
-  fs.writeTemplate(
-    'scaffold',
-    'templates/brief.hbs',
-    {
-      fields: fields,
-    },
-    saveDir+resource+'-brief.hbs'
-  );  
+  ); 
   fs.writeTemplate(
     'scaffold',
     'templates/resources.hbs',
