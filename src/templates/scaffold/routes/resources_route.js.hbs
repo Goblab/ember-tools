@@ -4,7 +4,7 @@ var {{objectName}} = Ember.Route.extend({
   model: function() {
     var store = this.get('store');
 	return new Ember.RSVP.Promise(function(resolve) {
-		store.find('{{modelName}}').then(function ({{resourcesRoute}}) {
+		store.find('{{modelStore}}').then(function ({{resourcesRoute}}) {
 	 		resolve({{resourcesRoute}});
 		})
     });  

@@ -1,13 +1,22 @@
-<section class="container">
-	<div class="page-header">
-    <h3>{{title}}</h3>
-	</div>
+<section class="container ">
+	<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
+	<div class="page-header text-center">
+    	<h1><b>{{title}}</b></h1>
+	</div>	
 	<div class="">
-	\{{#form-for controller}}	
+	\{{#form-for controller wrapper="basicFormWrapper"}}	
 		{{#each fields}}
-			\{{input {{name}} }}
+			<div class="row">
+				<div class="col-xs-12">		
+					\{{input {{name}} }}
+				</div>
+			</div>
 		{{/each}}		
-		\{{submit}}
+		<div class="row">
+			<div class="col-xs-12">
+				\{{submit class="btn btn-success pull-right"}}
+			</div>
+		</div>
 	\{{/form-for}}
 	</div>
 </section>

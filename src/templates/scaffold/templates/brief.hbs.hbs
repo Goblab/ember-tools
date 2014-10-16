@@ -1,5 +1,12 @@
-{{#each fields}}
-<div>
-  	<label>\{{ {{name}} }}</label>
+<div class="container">
+    <div class="row">
+		{{#each fields}}
+		<div>
+		  	<label>\{{ model.{{name}} }}</label>
+		</div>
+		{{/each}}
+	</div>
+  	\{{#link-to-animated "{{modelRoute}}" model class="btn btn-primary" animations="main:slideRight"}}
+  		<i class="fa fa-comments"></i> Ver completo
+  	\{{/link-to-animated}}	
 </div>
-{{/each}}

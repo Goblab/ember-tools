@@ -1,12 +1,9 @@
-<h2>{{title}}</h2>
-
-\{{#linkTo "{{newPath}}"}}New {{modelTitle}}\{{/linkTo}}
-
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 view-entries">
+      \{{#linkTo "{{newPath}}"}}New {{modelTitle}}\{{/linkTo}}
       \{{#collection contentBinding="controller"}}
-        \{{ {{modelName}}-brief modelBinding=this}}
+        \{{{{modelName}}-brief modelBinding=this}}
       \{{/collection}}
     </div>
   </div>

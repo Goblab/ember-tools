@@ -15,16 +15,36 @@ module.exports = function(resource, env) {
   createRoutes(resource);
   createTemplates(resource, env.fields);
   createComponents(resource, env.fields);
-  createViews(resource);
+  createViews(resource, env.fields);
   addRoutes(resource);
 };
+function createViews(resource, fields) {
+  var resourceName = inflector.underscore(resource) + '_view';
+  fs.writeGenerator('view', resourceName, {
+    objectName: inflector.objectify(resourceName)
+  }); 
+
+  fs.writeGenerator('view', inflector.pluralize(resourceName), {
+    objectName: inflector.objectify(inflector.pluralize(resourceName))
+  });   
+  var editName = 'edit_' + resourceName;
+  var newName = 'new_' + resourceName;
+
+  fs.writeGenerator('view', editName, {
+    objectName: inflector.objectify(editName)
+  }); 
+
+  fs.writeGenerator('view', newName, {
+    objectName: inflector.objectify(newName)
+  }); 
+}
 
 function createComponents(resource, fields) {
   if (fields) fields.forEach(function(field) {
     field.title = inflector.humanize(field.name);
     field.id = inflector.underscore(field.name);
   });
-
+  var modelRoute = inflector.underscore(inflector.singularize(resource));
   var resourceName = inflector.dasherize(resource) + '-brief';
   var modelName = inflector.underscore(inflector.singularize(resource));
   var saveDir = root + '/templates/components/';
@@ -40,6 +60,7 @@ function createComponents(resource, fields) {
     'templates/brief.hbs',
     {
       fields: fields,
+      modelRoute: modelRoute,
     },
     saveDir + resource+'-brief.hbs'
   ); 
@@ -112,6 +133,7 @@ function createRoutes(resource) {
     'routes/resources_route.js',
     {
       modelName: inflector.objectify(modelName),
+      modelStore: modelName,
       modelPath: '../models/' + inflector.underscore(modelName),
       objectName: objectName,
       resourcesRoute: inflector.pluralize(modelName)
